@@ -287,7 +287,7 @@ diff --git a/gcc/ada/init.c b/gcc/ada/init.c
 index 7aced7fe813..0ba1e8a9794 100644
 --- a/gcc/ada/init.c
 +++ b/gcc/ada/init.c
-@@ -2566,7 +2566,10 @@ __gnat_map_signal (int sig, siginfo_t *si, void *mcontext ATTRIBUTE_UNUSED)
+@@ -2568,7 +2568,10 @@ __gnat_map_signal (int sig, siginfo_t *si, void *mcontext ATTRIBUTE_UNUSED)
        /* Reset the use of alt stack, so that the alt stack will be used
  	 for the next signal delivery.
  	 The stack can't be used in case of stack checking.  */
@@ -383,7 +383,7 @@ diff --git a/gcc/c-family/c-lex.cc b/gcc/c-family/c-lex.cc
 index 1750fbc3d06..8fb9cbb47d2 100644
 --- a/gcc/c-family/c-lex.cc
 +++ b/gcc/c-family/c-lex.cc
-@@ -591,6 +591,21 @@ c_lex_with_flags (tree *value, location_t *loc, unsigned char *cpp_flags,
+@@ -593,6 +593,21 @@ c_lex_with_flags (tree *value, location_t *loc, unsigned char *cpp_flags,
  
      case CPP_NUMBER:
        {
@@ -459,7 +459,7 @@ diff --git a/gcc/c/c-decl.cc b/gcc/c/c-decl.cc
 index 8a894de3a1b..68f7d10897f 100644
 --- a/gcc/c/c-decl.cc
 +++ b/gcc/c/c-decl.cc
-@@ -7390,6 +7390,25 @@ grokdeclarator (const struct c_declarator *declarator,
+@@ -7392,6 +7392,25 @@ grokdeclarator (const struct c_declarator *declarator,
  		  }
  
  		size = c_fully_fold (size, false, &size_maybe_const);
@@ -485,7 +485,7 @@ index 8a894de3a1b..68f7d10897f 100644
  
  		if (pedantic && size_maybe_const && integer_zerop (size))
  		  {
-@@ -7432,6 +7451,9 @@ grokdeclarator (const struct c_declarator *declarator,
+@@ -7434,6 +7453,9 @@ grokdeclarator (const struct c_declarator *declarator,
  			  this_size_varies = size_varies = true;
  			warn_variable_length_array (name, size);
  		      }
@@ -523,7 +523,7 @@ index 0b8b2387109..7b5fb52dda1 100644
        token->id_kind = C_ID_NONE;
        token->keyword = RID_MAX;
        token->pragma_kind = PRAGMA_NONE;
-@@ -2872,15 +2875,28 @@ c_parser_declaration_or_fndef (c_parser *parser, bool fndef_ok,
+@@ -2874,15 +2877,28 @@ c_parser_declaration_or_fndef (c_parser *parser, bool fndef_ok,
  	    d = d->declarator;
  	  underspec_name = d->u.id.id;
  	}
@@ -553,7 +553,7 @@ index 0b8b2387109..7b5fb52dda1 100644
  	  if (!diagnosed_no_specs && !specs->declspecs_seen_p)
  	    {
  	      diagnosed_no_specs = true;
-@@ -2892,8 +2908,9 @@ c_parser_declaration_or_fndef (c_parser *parser, bool fndef_ok,
+@@ -2894,8 +2910,9 @@ c_parser_declaration_or_fndef (c_parser *parser, bool fndef_ok,
  	  if (c_parser_next_token_is_keyword (parser, RID_ASM))
  	    asm_name = c_parser_simple_asm_expr (parser);
  	  if (c_parser_next_token_is_keyword (parser, RID_ATTRIBUTE))
@@ -564,7 +564,7 @@ index 0b8b2387109..7b5fb52dda1 100644
  	      if (c_parser_next_token_is (parser, CPP_OPEN_BRACE))
  		{
  		  /* This means there is an attribute specifier after
-@@ -5668,6 +5685,88 @@ c_parser_gnu_attribute_any_word (c_parser *parser)
+@@ -5670,6 +5687,88 @@ c_parser_gnu_attribute_any_word (c_parser *parser)
    return attr_name;
  }
  
@@ -653,7 +653,7 @@ index 0b8b2387109..7b5fb52dda1 100644
  /* Parse attribute arguments.  This is a common form of syntax
     covering all currently valid GNU and standard attributes.
  
-@@ -5833,9 +5932,13 @@ c_parser_gnu_attribute (c_parser *parser, tree attrs,
+@@ -5835,9 +5934,13 @@ c_parser_gnu_attribute (c_parser *parser, tree attrs,
        attrs = chainon (attrs, attr);
        return attrs;
      }
@@ -709,7 +709,7 @@ index 4cdc2361a4b..1f89d7e73b1 100644
  			     fndecl, args_size, &args[i].locate);
  #ifdef BLOCK_REG_PADDING
        else
-@@ -4174,6 +4179,7 @@ split_complex_types (tree types)
+@@ -4184,6 +4189,7 @@ split_complex_types (tree types)
    return types;
  }
  
@@ -717,7 +717,7 @@ index 4cdc2361a4b..1f89d7e73b1 100644
  /* Output a library call to function ORGFUN (a SYMBOL_REF rtx)
     for a value of mode OUTMODE,
     with NARGS different arguments, passed as ARGS.
-@@ -4359,6 +4365,7 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
+@@ -4369,6 +4375,7 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
  			   argvec[count].reg != 0,
  #endif
  			   reg_parm_stack_space, 0,
@@ -725,7 +725,7 @@ index 4cdc2361a4b..1f89d7e73b1 100644
  			   NULL_TREE, &args_size, &argvec[count].locate);
  
        if (argvec[count].reg == 0 || argvec[count].partial != 0
-@@ -4429,8 +4436,16 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
+@@ -4439,8 +4446,16 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
  	  val = force_operand (XEXP (slot, 0), NULL_RTX);
  	}
  
@@ -744,7 +744,7 @@ index 4cdc2361a4b..1f89d7e73b1 100644
        argvec[count].mode = arg.mode;
        argvec[count].value = convert_modes (arg.mode, GET_MODE (val), val,
  					   unsigned_p);
-@@ -4450,6 +4465,7 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
+@@ -4460,6 +4475,7 @@ emit_library_call_value_1 (int retval, rtx orgfun, rtx value,
  			       argvec[count].reg != 0,
  #endif
  			       reg_parm_stack_space, argvec[count].partial,
@@ -938,7 +938,7 @@ diff --git a/gcc/common.opt b/gcc/common.opt
 index 5d0e255a40d..e3daeacd754 100644
 --- a/gcc/common.opt
 +++ b/gcc/common.opt
-@@ -3091,6 +3091,10 @@ fstack-usage
+@@ -3090,6 +3090,10 @@ fstack-usage
  Common RejectNegative Var(flag_stack_usage)
  Output stack usage information on a per-function basis.
  
@@ -949,7 +949,7 @@ index 5d0e255a40d..e3daeacd754 100644
  fstrength-reduce
  Common Ignore
  Does nothing.  Preserved for backward compatibility.
-@@ -3472,6 +3476,10 @@ fuse-ld=wild
+@@ -3471,6 +3475,10 @@ fuse-ld=wild
  Common Driver Negative(fuse-ld=wild)
  Use the Wild linker instead of the default linker.
  
@@ -1248,7 +1248,7 @@ index 62194b96450..dac71f0eb46 100644
    cumulative_args_t args_so_far = pack_cumulative_args (&args_so_far_v);
  
    for (tree chain = TYPE_ARG_TYPES (fntype);
-@@ -3003,7 +3007,11 @@ aarch64_constant_alignment (const_tree exp, HOST_WIDE_INT align)
+@@ -3018,7 +3022,11 @@ aarch64_constant_alignment (const_tree exp, HOST_WIDE_INT align)
  unsigned
  aarch64_data_alignment (const_tree type, unsigned align)
  {
@@ -1261,7 +1261,7 @@ index 62194b96450..dac71f0eb46 100644
      return align;
  
    if (AGGREGATE_TYPE_P (type))
-@@ -3426,6 +3434,7 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
+@@ -3441,6 +3449,7 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
    switch (type)
      {
      case SYMBOL_SMALL_ABSOLUTE:
@@ -1269,7 +1269,7 @@ index 62194b96450..dac71f0eb46 100644
        {
  	/* In ILP32, the mode of dest can be either SImode or DImode.  */
  	rtx tmp_reg = dest;
-@@ -3449,6 +3458,22 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
+@@ -3464,6 +3473,22 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
  	  }
  	imm = plus_constant (mode, imm, -mid_const);
  
@@ -1292,7 +1292,7 @@ index 62194b96450..dac71f0eb46 100644
  	emit_move_insn (tmp_reg, gen_rtx_HIGH (mode, copy_rtx (imm)));
  	if (mid_const)
  	  emit_set_insn (tmp_reg, plus_constant (mode, tmp_reg, mid_const));
-@@ -3534,6 +3559,7 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
+@@ -3549,6 +3574,7 @@ aarch64_load_symref_appropriately (rtx dest, rtx imm,
  	return;
        }
  
@@ -1300,7 +1300,7 @@ index 62194b96450..dac71f0eb46 100644
      case SYMBOL_SMALL_GOT_4G:
        emit_insn (gen_rtx_SET (dest, imm));
        return;
-@@ -6767,6 +6793,7 @@ aarch64_expand_mov_immediate (rtx dest, rtx imm)
+@@ -6782,6 +6808,7 @@ aarch64_expand_mov_immediate (rtx dest, rtx imm)
  	case SYMBOL_SMALL_TLSIE:
  	case SYMBOL_SMALL_GOT_28K:
  	case SYMBOL_SMALL_GOT_4G:
@@ -1308,7 +1308,7 @@ index 62194b96450..dac71f0eb46 100644
  	case SYMBOL_TINY_GOT:
  	case SYMBOL_TINY_TLSIE:
  	  if (const_offset != 0)
-@@ -6780,6 +6807,7 @@ aarch64_expand_mov_immediate (rtx dest, rtx imm)
+@@ -6795,6 +6822,7 @@ aarch64_expand_mov_immediate (rtx dest, rtx imm)
  	  /* FALLTHRU */
  
  	case SYMBOL_SMALL_ABSOLUTE:
@@ -1316,7 +1316,7 @@ index 62194b96450..dac71f0eb46 100644
  	case SYMBOL_TINY_ABSOLUTE:
  	case SYMBOL_TLSLE12:
  	case SYMBOL_TLSLE24:
-@@ -7443,6 +7471,7 @@ aarch64_return_in_memory (const_tree type, const_tree fndecl ATTRIBUTE_UNUSED)
+@@ -7435,6 +7463,7 @@ aarch64_return_in_memory (const_tree type, const_tree fndecl ATTRIBUTE_UNUSED)
    gcc_unreachable ();
  }
  
@@ -1324,7 +1324,7 @@ index 62194b96450..dac71f0eb46 100644
  static bool
  aarch64_vfp_is_call_candidate (cumulative_args_t pcum_v, machine_mode mode,
  			       const_tree type, int *nregs)
-@@ -7452,6 +7481,7 @@ aarch64_vfp_is_call_candidate (cumulative_args_t pcum_v, machine_mode mode,
+@@ -7444,6 +7473,7 @@ aarch64_vfp_is_call_candidate (cumulative_args_t pcum_v, machine_mode mode,
  						  &pcum->aapcs_vfp_rmode,
  						  nregs, NULL, pcum->silent_p);
  }
@@ -1332,7 +1332,7 @@ index 62194b96450..dac71f0eb46 100644
  
  /* Given MODE and TYPE of a function argument, return the alignment in
     bits.  The idea is to suppress any stronger alignment requested by
-@@ -7480,7 +7510,7 @@ aarch64_function_arg_alignment (machine_mode mode, const_tree type,
+@@ -7472,7 +7502,7 @@ aarch64_function_arg_alignment (machine_mode mode, const_tree type,
    if (integer_zerop (TYPE_SIZE (type)))
      return 0;
  
@@ -1341,7 +1341,7 @@ index 62194b96450..dac71f0eb46 100644
  
    if (!AGGREGATE_TYPE_P (type))
      {
-@@ -7637,7 +7667,7 @@ get_pcs_arg_reg (enum arm_pcs pcs, int num)
+@@ -7629,7 +7659,7 @@ get_pcs_arg_reg (enum arm_pcs pcs, int num)
  }
  
  static int
@@ -1350,7 +1350,7 @@ index 62194b96450..dac71f0eb46 100644
  {
    HOST_WIDE_INT size;
  
-@@ -7649,6 +7679,9 @@ aarch64_arg_size (const function_arg_info &arg)
+@@ -7641,6 +7671,9 @@ aarch64_arg_size (const function_arg_info &arg)
         shouldn't be asked to pass or return them.  */
      size = GET_MODE_SIZE (arg.mode).to_constant ();
  
@@ -1360,7 +1360,7 @@ index 62194b96450..dac71f0eb46 100644
    return ROUND_UP (size, UNITS_PER_WORD);
  }
  
-@@ -7800,6 +7833,14 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -7792,6 +7825,14 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
       Both behaviors were wrong, but in different cases.  */
  
    pcum->aapcs_arg_processed = true;
@@ -1375,7 +1375,7 @@ index 62194b96450..dac71f0eb46 100644
  
    pure_scalable_type_info pst_info;
    if (type && pst_info.analyze_registers (type))
-@@ -7853,12 +7894,28 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -7845,12 +7886,28 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
  		&& (aarch64_some_values_include_pst_objects_p (type)
  		    || (vec_flags & VEC_PARTIAL)));
  
@@ -1405,7 +1405,7 @@ index 62194b96450..dac71f0eb46 100644
    gcc_assert (!sve_p || !allocate_nvrn);
  
    unsigned int alignment
-@@ -7887,7 +7944,13 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -7879,7 +7936,13 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
        if (!pcum->silent_p && !TARGET_FLOAT)
  	aarch64_err_no_fpadvsimd (mode);
  
@@ -1420,7 +1420,7 @@ index 62194b96450..dac71f0eb46 100644
  	{
  	  pcum->aapcs_nextnvrn = nvrn + nregs;
  	  if (!aarch64_composite_type_p (type, mode))
-@@ -7917,6 +7980,7 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -7909,6 +7972,7 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
  		}
  	      pcum->aapcs_reg = par;
  	    }
@@ -1428,7 +1428,7 @@ index 62194b96450..dac71f0eb46 100644
  	  return;
  	}
        else
-@@ -7937,10 +8001,19 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -7929,10 +7993,19 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
      {
        gcc_assert (nregs == 0 || nregs == 1 || nregs == 2);
  
@@ -1449,7 +1449,7 @@ index 62194b96450..dac71f0eb46 100644
  	{
  	  /* Emit a warning if the alignment changed when taking the
  	     'packed' attribute into account.  */
-@@ -8012,8 +8085,8 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -8004,8 +8077,8 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
  	    }
  	  pcum->aapcs_reg = par;
  	}
@@ -1459,7 +1459,7 @@ index 62194b96450..dac71f0eb46 100644
        return;
      }
  
-@@ -8023,7 +8096,81 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
+@@ -8015,7 +8088,81 @@ aarch64_layout_arg (cumulative_args_t pcum_v, const function_arg_info &arg)
    /* The argument is passed on stack; record the needed number of words for
       this argument and align the total size if necessary.  */
  on_stack:
@@ -1542,7 +1542,7 @@ index 62194b96450..dac71f0eb46 100644
  
    if (warn_pcs_change_le_gcc14
        && abi_break_gcc_13
-@@ -8039,6 +8186,8 @@ on_stack:
+@@ -8031,6 +8178,8 @@ on_stack:
      inform (input_location, "parameter passing for argument of type "
  	    "%qT changed in GCC 14.1", type);
  
@@ -1551,7 +1551,7 @@ index 62194b96450..dac71f0eb46 100644
    if (alignment == 16 * BITS_PER_UNIT)
      {
        int new_size = ROUND_UP (pcum->aapcs_stack_size, 16 / UNITS_PER_WORD);
-@@ -8148,12 +8297,33 @@ aarch64_init_cumulative_args (CUMULATIVE_ARGS *pcum,
+@@ -8140,12 +8289,33 @@ aarch64_init_cumulative_args (CUMULATIVE_ARGS *pcum,
    pcum->aapcs_arg_processed = false;
    pcum->aapcs_stack_words = 0;
    pcum->aapcs_stack_size = 0;
@@ -1585,7 +1585,7 @@ index 62194b96450..dac71f0eb46 100644
  
    if (!silent_p
        && !TARGET_FLOAT
-@@ -8194,6 +8364,7 @@ aarch64_function_arg_advance (cumulative_args_t pcum_v,
+@@ -8186,6 +8356,7 @@ aarch64_function_arg_advance (cumulative_args_t pcum_v,
        || pcum->pcs_variant == ARM_PCS_MS_VARIADIC)
      {
        aarch64_layout_arg (pcum_v, arg);
@@ -1593,7 +1593,7 @@ index 62194b96450..dac71f0eb46 100644
        if (pcum->aapcs_reg && aarch64_call_switches_pstate_sm (pcum->isa_mode))
  	aarch64_record_sme_mode_switch_args (pcum);
  
-@@ -8204,6 +8375,12 @@ aarch64_function_arg_advance (cumulative_args_t pcum_v,
+@@ -8196,6 +8367,12 @@ aarch64_function_arg_advance (cumulative_args_t pcum_v,
        pcum->aapcs_stack_size += pcum->aapcs_stack_words;
        pcum->aapcs_stack_words = 0;
        pcum->aapcs_reg = NULL_RTX;
@@ -1606,7 +1606,7 @@ index 62194b96450..dac71f0eb46 100644
      }
  }
  
-@@ -8243,12 +8420,15 @@ aarch64_function_arg_regno_p (unsigned regno)
+@@ -8235,12 +8412,15 @@ aarch64_function_arg_regno_p (unsigned regno)
    gcc_unreachable ();
  }
  
@@ -1628,7 +1628,7 @@ index 62194b96450..dac71f0eb46 100644
  
  static unsigned int
  aarch64_function_arg_boundary (machine_mode mode, const_tree type)
-@@ -8262,8 +8442,113 @@ aarch64_function_arg_boundary (machine_mode mode, const_tree type)
+@@ -8254,8 +8434,113 @@ aarch64_function_arg_boundary (machine_mode mode, const_tree type)
  							   &abi_break_gcc_14);
    /* We rely on aarch64_layout_arg and aarch64_gimplify_va_arg_expr
       to emit warnings about ABI incompatibility.  */
@@ -1742,7 +1742,7 @@ index 62194b96450..dac71f0eb46 100644
  }
  
  /* Implement TARGET_GET_RAW_RESULT_MODE and TARGET_GET_RAW_ARG_MODE.  */
-@@ -11711,6 +11996,7 @@ aarch64_classify_address (struct aarch64_address_info *info,
+@@ -11703,6 +11988,7 @@ aarch64_classify_address (struct aarch64_address_info *info,
        /* load literal: pc-relative constant pool entry.  Only supported
           for SI mode or larger.  */
        info->type = ADDRESS_SYMBOLIC;
@@ -1750,7 +1750,7 @@ index 62194b96450..dac71f0eb46 100644
  
        if (!load_store_pair_p
  	  && GET_MODE_SIZE (mode).is_constant (&const_size)
-@@ -11718,6 +12004,7 @@ aarch64_classify_address (struct aarch64_address_info *info,
+@@ -11710,6 +11996,7 @@ aarch64_classify_address (struct aarch64_address_info *info,
  	{
  	  poly_int64 offset;
  	  rtx sym = strip_offset_and_salt (x, &offset);
@@ -1758,7 +1758,7 @@ index 62194b96450..dac71f0eb46 100644
  	  return ((LABEL_REF_P (sym)
  		   || (SYMBOL_REF_P (sym)
  		       && CONSTANT_POOL_ADDRESS_P (sym)
-@@ -11735,10 +12022,13 @@ aarch64_classify_address (struct aarch64_address_info *info,
+@@ -11727,10 +12014,13 @@ aarch64_classify_address (struct aarch64_address_info *info,
  	  poly_int64 offset;
  	  HOST_WIDE_INT const_offset;
  	  rtx sym = strip_offset_and_salt (info->offset, &offset);
@@ -1773,7 +1773,7 @@ index 62194b96450..dac71f0eb46 100644
  	    {
  	      /* The symbol and offset must be aligned to the access size.  */
  	      unsigned int align;
-@@ -11788,6 +12078,55 @@ aarch64_address_valid_for_prefetch_p (rtx x, bool strict_p)
+@@ -11780,6 +12070,55 @@ aarch64_address_valid_for_prefetch_p (rtx x, bool strict_p)
    if (!res)
      return false;
  
@@ -1829,7 +1829,7 @@ index 62194b96450..dac71f0eb46 100644
    /* ... except writeback forms.  */
    return addr.type != ADDRESS_REG_WB;
  }
-@@ -12955,6 +13294,144 @@ sizetochar (int size)
+@@ -12948,6 +13287,144 @@ sizetochar (int size)
      }
  }
  
@@ -1974,7 +1974,7 @@ index 62194b96450..dac71f0eb46 100644
  /* Print operand X to file F in a target specific manner according to CODE.
     The acceptable formatting commands given by CODE are:
       'c':		An integer or symbol address without a preceding #
-@@ -13028,6 +13505,12 @@ aarch64_print_operand (FILE *f, rtx x, int code)
+@@ -13021,6 +13498,12 @@ aarch64_print_operand (FILE *f, rtx x, int code)
  	}
        break;
  
@@ -1987,7 +1987,7 @@ index 62194b96450..dac71f0eb46 100644
      case 'e':
        {
  	x = unwrap_const_vec_duplicate (x);
-@@ -13360,7 +13843,7 @@ aarch64_print_operand (FILE *f, rtx x, int code)
+@@ -13353,7 +13836,7 @@ aarch64_print_operand (FILE *f, rtx x, int code)
      case 'A':
        if (GET_CODE (x) == HIGH)
  	x = XEXP (x, 0);
@@ -1996,7 +1996,7 @@ index 62194b96450..dac71f0eb46 100644
        switch (aarch64_classify_symbolic_expression (x))
  	{
  	case SYMBOL_SMALL_GOT_4G:
-@@ -13391,9 +13874,26 @@ aarch64_print_operand (FILE *f, rtx x, int code)
+@@ -13384,9 +13867,26 @@ aarch64_print_operand (FILE *f, rtx x, int code)
  	  break;
  	}
        output_addr_const (asm_out_file, x);
@@ -2023,7 +2023,7 @@ index 62194b96450..dac71f0eb46 100644
        switch (aarch64_classify_symbolic_expression (x))
  	{
  	case SYMBOL_SMALL_GOT_4G:
-@@ -13431,10 +13931,12 @@ aarch64_print_operand (FILE *f, rtx x, int code)
+@@ -13424,10 +13924,12 @@ aarch64_print_operand (FILE *f, rtx x, int code)
  	default:
  	  break;
  	}
@@ -2036,7 +2036,7 @@ index 62194b96450..dac71f0eb46 100644
        switch (aarch64_classify_symbolic_expression (x))
  	{
  	case SYMBOL_TLSLE24:
-@@ -13443,6 +13945,7 @@ aarch64_print_operand (FILE *f, rtx x, int code)
+@@ -13436,6 +13938,7 @@ aarch64_print_operand (FILE *f, rtx x, int code)
  	default:
  	  break;
  	}
@@ -2044,7 +2044,7 @@ index 62194b96450..dac71f0eb46 100644
        output_addr_const (asm_out_file, x);
        break;
  
-@@ -13608,8 +14111,13 @@ aarch64_print_address_internal (FILE *f, machine_mode mode, rtx x,
+@@ -13601,8 +14104,13 @@ aarch64_print_address_internal (FILE *f, machine_mode mode, rtx x,
  	break;
  
        case ADDRESS_LO_SUM:
@@ -2058,7 +2058,7 @@ index 62194b96450..dac71f0eb46 100644
  	asm_fprintf (f, "]");
  	return true;
  
-@@ -13926,7 +14434,23 @@ aarch64_frame_pointer_required ()
+@@ -13919,7 +14427,23 @@ aarch64_frame_pointer_required ()
  {
    /* If the function needs to record the incoming value of PSTATE.SM,
       make sure that the slot is accessible from the frame pointer.  */
@@ -2083,7 +2083,7 @@ index 62194b96450..dac71f0eb46 100644
  }
  
  static bool
-@@ -14155,6 +14679,8 @@ aarch64_asm_output_labelref (FILE* f, const char *name)
+@@ -14148,6 +14672,8 @@ aarch64_asm_output_labelref (FILE* f, const char *name)
    asm_fprintf (f, "%U%s", name);
  }
  
@@ -2092,7 +2092,7 @@ index 62194b96450..dac71f0eb46 100644
  static void
  aarch64_elf_asm_constructor (rtx symbol, int priority)
  {
-@@ -14194,6 +14720,7 @@ aarch64_elf_asm_destructor (rtx symbol, int priority)
+@@ -14187,6 +14713,7 @@ aarch64_elf_asm_destructor (rtx symbol, int priority)
        assemble_aligned_integer (POINTER_BYTES, symbol);
      }
  }
@@ -2100,7 +2100,7 @@ index 62194b96450..dac71f0eb46 100644
  
  const char*
  aarch64_output_casesi (rtx *operands)
-@@ -14348,12 +14875,16 @@ aarch64_select_rtx_section (machine_mode mode,
+@@ -14341,12 +14868,16 @@ aarch64_select_rtx_section (machine_mode mode,
    if (aarch64_can_use_per_function_literal_pools_p ())
      return function_section (current_function_decl);
  
@@ -2117,7 +2117,7 @@ index 62194b96450..dac71f0eb46 100644
  }
  
  /* Implement ASM_OUTPUT_POOL_EPILOGUE.  */
-@@ -16815,15 +17346,17 @@ aarch64_init_builtins ()
+@@ -16808,15 +17339,17 @@ aarch64_init_builtins ()
      {
        aarch64_ms_variadic_abi_init_builtins ();
      }
@@ -2138,7 +2138,7 @@ index 62194b96450..dac71f0eb46 100644
    unsigned int code = DECL_MD_FUNCTION_CODE (fndecl);
    unsigned int subcode = code >> AARCH64_BUILTIN_SHIFT;
    tree type = TREE_TYPE (TREE_TYPE (fndecl));
-@@ -20230,10 +20763,14 @@ initialize_aarch64_code_model (struct gcc_options *opts)
+@@ -20223,10 +20756,14 @@ initialize_aarch64_code_model (struct gcc_options *opts)
  	}
        break;
      case AARCH64_CMODEL_LARGE:
@@ -2155,7 +2155,7 @@ index 62194b96450..dac71f0eb46 100644
  	sorry ("code model %qs not supported in ilp32 mode", "large");
        break;
      case AARCH64_CMODEL_TINY_PIC:
-@@ -22185,7 +22722,9 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
+@@ -22178,7 +22715,9 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
  	case AARCH64_CMODEL_SMALL_SPIC:
  	case AARCH64_CMODEL_SMALL_PIC:
  	case AARCH64_CMODEL_SMALL:
@@ -2166,7 +2166,7 @@ index 62194b96450..dac71f0eb46 100644
  
  	default:
  	  gcc_unreachable ();
-@@ -22222,12 +22761,23 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
+@@ -22215,12 +22754,23 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
  
  	  return SYMBOL_TINY_ABSOLUTE;
  
@@ -2193,7 +2193,7 @@ index 62194b96450..dac71f0eb46 100644
  	      && !aarch64_symbol_binds_local_p (x))
  	    return aarch64_cmodel == AARCH64_CMODEL_SMALL_SPIC
  		    ? SYMBOL_SMALL_GOT_28K : SYMBOL_SMALL_GOT_4G;
-@@ -22238,7 +22788,8 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
+@@ -22231,7 +22781,8 @@ aarch64_classify_symbol (rtx x, HOST_WIDE_INT offset)
  		|| offset_within_block_p (x, offset)))
  	    return SYMBOL_FORCE_TO_MEM;
  
@@ -2203,7 +2203,7 @@ index 62194b96450..dac71f0eb46 100644
  
  	case AARCH64_CMODEL_LARGE:
  	  /* This is alright even in PIC code as the constant
-@@ -22389,7 +22940,9 @@ static GTY(()) tree va_list_type;
+@@ -22382,7 +22933,9 @@ static GTY(()) tree va_list_type;
     };
  
     Windows ABI is handled using
@@ -2214,7 +2214,7 @@ index 62194b96450..dac71f0eb46 100644
  
  static tree
  aarch64_build_builtin_va_list (void)
-@@ -22397,6 +22950,13 @@ aarch64_build_builtin_va_list (void)
+@@ -22390,6 +22943,13 @@ aarch64_build_builtin_va_list (void)
    if (TARGET_AARCH64_MS_ABI)
      return aarch64_ms_variadic_abi_build_builtin_va_list ();
  
@@ -2228,7 +2228,7 @@ index 62194b96450..dac71f0eb46 100644
    tree va_list_name;
    tree f_stack, f_grtop, f_vrtop, f_groff, f_vroff;
  
-@@ -22491,6 +23051,13 @@ aarch64_expand_builtin_va_start (tree valist, rtx nextarg)
+@@ -22484,6 +23044,13 @@ aarch64_expand_builtin_va_start (tree valist, rtx nextarg)
    int vr_save_area_size = cfun->va_list_fpr_size;
    int vr_offset;
  
@@ -2242,7 +2242,7 @@ index 62194b96450..dac71f0eb46 100644
    cum = &crtl->args.info;
    if (cfun->va_list_gpr_size)
      gr_save_area_size = MIN ((num_pcs_arg_regs (cum->pcs_variant)
-@@ -22583,6 +23150,9 @@ aarch64_gimplify_va_arg_expr (tree valist, tree type, gimple_seq *pre_p,
+@@ -22576,6 +23143,9 @@ aarch64_gimplify_va_arg_expr (tree valist, tree type, gimple_seq *pre_p,
    HOST_WIDE_INT size, rsize, adjust, align;
    tree t, u, cond1, cond2;
  
@@ -2252,7 +2252,7 @@ index 62194b96450..dac71f0eb46 100644
    indirect_p = pass_va_arg_by_reference (type);
    if (indirect_p)
      type = build_pointer_type (type);
-@@ -22787,8 +23357,18 @@ aarch64_gimplify_va_arg_expr (tree valist, tree type, gimple_seq *pre_p,
+@@ -22780,8 +23350,18 @@ aarch64_gimplify_va_arg_expr (tree valist, tree type, gimple_seq *pre_p,
  	  field_ptr_t = double_ptr_type_node;
  	  break;
  	case E_TFmode:
@@ -2273,7 +2273,7 @@ index 62194b96450..dac71f0eb46 100644
  	  break;
  	case E_SDmode:
  	  field_t = dfloat32_type_node;
-@@ -22872,6 +23452,9 @@ aarch64_setup_incoming_varargs (cumulative_args_t cum_v,
+@@ -22865,6 +23445,9 @@ aarch64_setup_incoming_varargs (cumulative_args_t cum_v,
    int gr_saved = cfun->va_list_gpr_size;
    int vr_saved = cfun->va_list_fpr_size;
  
@@ -2283,7 +2283,7 @@ index 62194b96450..dac71f0eb46 100644
    /* The caller has advanced CUM up to, but not beyond, the last named
       argument.  Advance a local copy of CUM past the last "real" named
       argument, to find out how many registers are left over.  */
-@@ -23426,6 +24009,7 @@ aarch64_vfp_is_call_or_return_candidate (machine_mode mode,
+@@ -23419,6 +24002,7 @@ aarch64_vfp_is_call_or_return_candidate (machine_mode mode,
        unsigned int warn_psabi_flags = 0;
        int ag_count = aapcs_vfp_sub_candidate (type, &new_mode,
  					      &warn_psabi_flags);
@@ -2291,7 +2291,7 @@ index 62194b96450..dac71f0eb46 100644
        if (ag_count > 0 && ag_count <= HA_MAX_NUM_FLDS)
  	{
  	  static unsigned last_reported_type_uid;
-@@ -23461,9 +24045,7 @@ aarch64_vfp_is_call_or_return_candidate (machine_mode mode,
+@@ -23454,9 +24038,7 @@ aarch64_vfp_is_call_or_return_candidate (machine_mode mode,
  			"type %qT changed %{in GCC 12.1%}",
  			TYPE_MAIN_VARIANT (type), url12);
  	    }
@@ -2301,7 +2301,7 @@ index 62194b96450..dac71f0eb46 100644
  	}
        else
  	return false;
-@@ -23767,6 +24349,12 @@ aarch64_convert_to_type (tree type, tree expr)
+@@ -23760,6 +24342,12 @@ aarch64_convert_to_type (tree type, tree expr)
  static const char *
  aarch64_mangle_type (const_tree type)
  {
@@ -2314,7 +2314,7 @@ index 62194b96450..dac71f0eb46 100644
    /* The AArch64 ABI documents say that "__va_list" has to be
       mangled as if it is in the "std" namespace.
       The Windows Arm64 ABI uses just an address of the first variadic
-@@ -23790,6 +24378,12 @@ aarch64_mangle_type (const_tree type)
+@@ -23783,6 +24371,12 @@ aarch64_mangle_type (const_tree type)
    if (TYPE_MAIN_VARIANT (type) == aarch64_mfp8_type_node)
      return "u6__mfp8";
  
@@ -2327,7 +2327,7 @@ index 62194b96450..dac71f0eb46 100644
    /* Mangle AArch64-specific internal types.  TYPE_NAME is non-NULL_TREE for
       builtin types.  */
    if (TYPE_NAME (type) != NULL)
-@@ -24781,7 +25375,8 @@ aarch64_mov_operand_p (rtx x, machine_mode mode)
+@@ -24774,7 +25368,8 @@ aarch64_mov_operand_p (rtx x, machine_mode mode)
  
    /* GOT accesses are valid moves.  */
    if (SYMBOL_REF_P (x)
@@ -2337,7 +2337,7 @@ index 62194b96450..dac71f0eb46 100644
      return true;
  
    if (SYMBOL_REF_P (x) && mode == DImode && CONSTANT_ADDRESS_P (x))
-@@ -26286,12 +26881,8 @@ aarch64_asm_output_variant_pcs (FILE *stream, const tree decl, const char* name)
+@@ -26320,12 +26915,8 @@ aarch64_asm_output_variant_pcs (FILE *stream, const tree decl, const char* name)
  static std::string aarch64_last_printed_arch_string;
  static std::string aarch64_last_printed_tune_string;
  
@@ -2352,7 +2352,7 @@ index 62194b96450..dac71f0eb46 100644
  {
    tree target_parts = DECL_FUNCTION_SPECIFIC_TARGET (fndecl);
  
-@@ -26326,15 +26917,60 @@ aarch64_declare_function_name (FILE *stream, const char* name,
+@@ -26360,15 +26951,60 @@ aarch64_declare_function_name (FILE *stream, const char* name,
  		   this_tune->name);
        aarch64_last_printed_tune_string = this_tune->name;
      }
@@ -2413,7 +2413,7 @@ index 62194b96450..dac71f0eb46 100644
  
  /* Implement PRINT_PATCHABLE_FUNCTION_ENTRY.  */
  
-@@ -26391,12 +27027,17 @@ aarch64_output_patchable_area (unsigned int patch_area_size, bool record_p)
+@@ -26425,12 +27061,17 @@ aarch64_output_patchable_area (unsigned int patch_area_size, bool record_p)
  /* Implement ASM_OUTPUT_DEF_FROM_DECLS.  Output .variant_pcs for aliases.  */
  
  void
@@ -2432,7 +2432,7 @@ index 62194b96450..dac71f0eb46 100644
  }
  
  /* Implement ASM_OUTPUT_EXTERNAL.  Output .variant_pcs for undefined
-@@ -26478,7 +27119,10 @@ aarch64_start_file (void)
+@@ -26512,7 +27153,10 @@ aarch64_start_file (void)
    asm_fprintf (asm_out_file, "\t.arch %s\n",
  	       arch_string.c_str ());
  
@@ -2444,7 +2444,7 @@ index 62194b96450..dac71f0eb46 100644
  }
  
  /* Emit load exclusive.  */
-@@ -26999,6 +27643,16 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
+@@ -27033,6 +27677,16 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
      }
  
    gcc_assert (CONST_INT_P (info.u.mov.value));
@@ -2461,7 +2461,7 @@ index 62194b96450..dac71f0eb46 100644
  
    if (which == AARCH64_CHECK_MOV)
      {
-@@ -27025,16 +27679,16 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
+@@ -27059,16 +27713,16 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
  		  ? "msl" : "lsl");
        if (lane_count == 1)
  	snprintf (templ, sizeof (templ), "%s\t%%d0, " HOST_WIDE_INT_PRINT_HEX,
@@ -2481,7 +2481,7 @@ index 62194b96450..dac71f0eb46 100644
      }
    else
      {
-@@ -27055,12 +27709,12 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
+@@ -27089,12 +27743,12 @@ aarch64_output_simd_imm (rtx const_vector, unsigned width,
        else if (info.u.mov.shift)
  	snprintf (templ, sizeof (templ), "%s\t%%0.%d%c, #"
  		  HOST_WIDE_INT_PRINT_DEC ", %s #%d", mnemonic, lane_count,
@@ -2496,7 +2496,7 @@ index 62194b96450..dac71f0eb46 100644
      }
    return templ;
  }
-@@ -29012,6 +29666,8 @@ aarch64_expand_subvti (rtx op0, rtx low_dest, rtx low_in1,
+@@ -29046,6 +29700,8 @@ aarch64_expand_subvti (rtx op0, rtx low_dest, rtx low_in1,
  static unsigned HOST_WIDE_INT
  aarch64_asan_shadow_offset (void)
  {
@@ -2505,7 +2505,7 @@ index 62194b96450..dac71f0eb46 100644
    if (TARGET_ILP32)
      return (HOST_WIDE_INT_1 << 29);
    else
-@@ -30407,7 +31063,8 @@ aarch64_libgcc_floating_mode_supported_p (scalar_float_mode mode)
+@@ -30441,7 +31097,8 @@ aarch64_libgcc_floating_mode_supported_p (scalar_float_mode mode)
  }
  
  /* Implement TARGET_SCALAR_MODE_SUPPORTED_P - return TRUE
@@ -2515,7 +2515,7 @@ index 62194b96450..dac71f0eb46 100644
  
  static bool
  aarch64_scalar_mode_supported_p (scalar_mode mode)
-@@ -30508,8 +31165,13 @@ aarch64_bitint_type_info (int n, struct bitint_info *info)
+@@ -30542,8 +31199,13 @@ aarch64_bitint_type_info (int n, struct bitint_info *info)
  static machine_mode
  aarch64_c_mode_for_floating_type (enum tree_index ti)
  {
@@ -2529,7 +2529,7 @@ index 62194b96450..dac71f0eb46 100644
    return default_mode_for_floating_type (ti);
  }
  
-@@ -31721,19 +32383,37 @@ aarch64_sls_emit_shared_blr_thunks (FILE *out_file)
+@@ -31755,19 +32417,37 @@ aarch64_sls_emit_shared_blr_thunks (FILE *out_file)
  	continue;
  
        const char *name = indirect_symbol_names[regnum];
@@ -2570,7 +2570,7 @@ index 62194b96450..dac71f0eb46 100644
      }
  }
  
-@@ -33150,6 +33830,59 @@ aarch64_check_target_clone_version (string_slice str, location_t *loc)
+@@ -33195,6 +33875,59 @@ aarch64_check_target_clone_version (string_slice str, location_t *loc)
    gcc_unreachable ();
  }
  
@@ -2630,7 +2630,7 @@ index 62194b96450..dac71f0eb46 100644
  /* Target-specific selftests.  */
  
  #if CHECKING_P
-@@ -33412,6 +34145,15 @@ aarch64_run_selftests (void)
+@@ -33457,6 +34190,15 @@ aarch64_run_selftests (void)
  #define TARGET_ASM_UNALIGNED_DI_OP TARGET_ASM_ALIGNED_DI_OP
  #endif
  
@@ -2646,7 +2646,7 @@ index 62194b96450..dac71f0eb46 100644
  #undef TARGET_ASM_CAN_OUTPUT_MI_THUNK
  #define TARGET_ASM_CAN_OUTPUT_MI_THUNK \
    hook_bool_const_tree_hwi_hwi_const_tree_true
-@@ -33532,6 +34274,12 @@ aarch64_run_selftests (void)
+@@ -33577,6 +34319,12 @@ aarch64_run_selftests (void)
  #undef TARGET_FUNCTION_ARG_BOUNDARY
  #define TARGET_FUNCTION_ARG_BOUNDARY aarch64_function_arg_boundary
  
@@ -2659,7 +2659,7 @@ index 62194b96450..dac71f0eb46 100644
  #undef TARGET_FUNCTION_ARG_PADDING
  #define TARGET_FUNCTION_ARG_PADDING aarch64_function_arg_padding
  
-@@ -33808,8 +34556,16 @@ aarch64_libgcc_floating_mode_supported_p
+@@ -33853,8 +34601,16 @@ aarch64_libgcc_floating_mode_supported_p
  
  /* Section anchor support.  */
  
@@ -2676,7 +2676,7 @@ index 62194b96450..dac71f0eb46 100644
  
  /* Limit the maximum anchor offset to 4k-1, since that's the limit for a
     byte offset; we can do much more for larger data types, but have no way
-@@ -33869,6 +34625,11 @@ aarch64_libgcc_floating_mode_supported_p
+@@ -33914,6 +34670,11 @@ aarch64_libgcc_floating_mode_supported_p
  #undef TARGET_ASAN_SHADOW_OFFSET
  #define TARGET_ASAN_SHADOW_OFFSET aarch64_asan_shadow_offset
  
@@ -2688,7 +2688,7 @@ index 62194b96450..dac71f0eb46 100644
  #undef TARGET_LEGITIMIZE_ADDRESS
  #define TARGET_LEGITIMIZE_ADDRESS aarch64_legitimize_address
  
-@@ -33917,7 +34678,7 @@ aarch64_libgcc_floating_mode_supported_p
+@@ -33962,7 +34723,7 @@ aarch64_libgcc_floating_mode_supported_p
  
  /* The architecture reserves bits 0 and 1 so use bit 2 for descriptors.  */
  #undef TARGET_CUSTOM_FUNCTION_DESCRIPTORS
@@ -4391,7 +4391,7 @@ index 449ed491dd8..641a6648095 100644
    token->type
      = c_lex_with_flags (&token->u.value, &token->location, &token->flags,
  			flags);
-@@ -25906,7 +25999,7 @@ cp_parser_init_declarator (cp_parser* parser,
+@@ -25908,7 +26001,7 @@ cp_parser_init_declarator (cp_parser* parser,
    cp_declarator *declarator;
    tree prefix_attributes;
    tree attributes = NULL;
@@ -4400,7 +4400,7 @@ index 449ed491dd8..641a6648095 100644
    tree initializer;
    tree decl = NULL_TREE;
    tree scope;
-@@ -25988,8 +26081,6 @@ cp_parser_init_declarator (cp_parser* parser,
+@@ -25990,8 +26083,6 @@ cp_parser_init_declarator (cp_parser* parser,
        asm_spec_start_token = cp_lexer_peek_token (parser->lexer);
        asm_specification = cp_parser_asm_specification_opt (parser);
      }
@@ -4409,7 +4409,7 @@ index 449ed491dd8..641a6648095 100644
  
    /* Gather the attributes that were provided with the
       decl-specifiers.  */
-@@ -25999,6 +26090,14 @@ cp_parser_init_declarator (cp_parser* parser,
+@@ -26001,6 +26092,14 @@ cp_parser_init_declarator (cp_parser* parser,
    attributes_start_token = cp_lexer_peek_token (parser->lexer);
    attributes = cp_parser_attributes_opt (parser);
  
@@ -4424,7 +4424,7 @@ index 449ed491dd8..641a6648095 100644
    /* Peek at the next token.  */
    token = cp_lexer_peek_token (parser->lexer);
  
-@@ -26040,9 +26139,16 @@ cp_parser_init_declarator (cp_parser* parser,
+@@ -26042,9 +26141,16 @@ cp_parser_init_declarator (cp_parser* parser,
  		      "an %<asm%> specification is not allowed "
  		      "on a function-definition");
  	  if (attributes)
@@ -4444,7 +4444,7 @@ index 449ed491dd8..641a6648095 100644
  	  /* This is a function-definition.  */
  	  *function_definition_p = true;
  
-@@ -32952,6 +33058,91 @@ cp_parser_gnu_attributes_opt (cp_parser* parser)
+@@ -32955,6 +33061,91 @@ cp_parser_gnu_attributes_opt (cp_parser* parser)
    return attributes;
  }
  
@@ -4536,7 +4536,7 @@ index 449ed491dd8..641a6648095 100644
  /* Parse a GNU attribute-list.
  
     attribute-list:
-@@ -33011,9 +33202,12 @@ cp_parser_gnu_attribute_list (cp_parser* parser, bool exactly_one /* = false */)
+@@ -33014,9 +33205,12 @@ cp_parser_gnu_attribute_list (cp_parser* parser, bool exactly_one /* = false */)
  
  	  /* Peek at the next token.  */
  	  token = cp_lexer_peek_token (parser->lexer);
@@ -4551,7 +4551,7 @@ index 449ed491dd8..641a6648095 100644
  	      vec<tree, va_gc> *vec;
  	      int attr_flag = (attribute_takes_identifier_p (identifier)
  			       ? id_attr : normal_attr);
-@@ -33030,12 +33224,12 @@ cp_parser_gnu_attribute_list (cp_parser* parser, bool exactly_one /* = false */)
+@@ -33033,12 +33227,12 @@ cp_parser_gnu_attribute_list (cp_parser* parser, bool exactly_one /* = false */)
  		  arguments = build_tree_list_vec (vec);
  		  release_tree_vector (vec);
  		}
@@ -4614,7 +4614,7 @@ index 9207a021e64..42f5acfbd1e 100644
  steps for those functions which can avoid unwanted elision of checking steps.
  
  @opindex fcontracts-client-check
-@@ -19032,6 +19032,17 @@ the behavior of older compilers in which temporaries' stack space is
+@@ -19033,6 +19033,17 @@ the behavior of older compilers in which temporaries' stack space is
  not reused, the aggressive stack reuse can lead to runtime errors. This
  option is used to control the temporary stack reuse optimization.
  
