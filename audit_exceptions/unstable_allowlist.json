@@ -11,5 +11,10 @@
   "recode": "3.7-beta",
   "spatialite-gui": "2.1.0-beta",
   "tcptraceroute": "1.5beta",
-  "vbindiff": "3.0_beta"
+  "vbindiff": "3.0_beta",
+  "flang": "23.1.0-rc",
+  "lld": "23.1.0-rc",
+  "lldb": "23.1.0-rc",
+  "llvm": "23.1.0-rc",
+  "wasi-runtimes": "23.1.0-rc"
 }
