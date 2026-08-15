@@ -1,11 +1,11 @@
 class Lld < Formula
   desc "LLVM Project Linker"
   homepage "https://lld.llvm.org/"
-  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz"
-  sha256 "922f1817a0df7b1489272d18134ee0087a8b068828f87ac63b9861b1a9965888"
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0-rc3/llvm-project-23.1.0-rc3.src.tar.xz"
+  sha256 "15796d21e2c5818895edf06a46d7748972b0cb799a499112045b056972f9984b"
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
   license "Apache-2.0" => { with: "LLVM-exception" }
-  compatibility_version 1
+  compatibility_version 2
   head "https://github.com/llvm/llvm-project.git", branch: "main"
 
   livecheck do
@@ -37,7 +37,6 @@ class Lld < Formula
     system "cmake", "-S", "lld", "-B", "build",
                     "-DBUILD_SHARED_LIBS=ON",
                     "-DCMAKE_INSTALL_RPATH=#{rpath}",
-                    "-DLLD_BUILT_STANDALONE=ON",
                     "-DLLD_VENDOR=#{tap&.user}",
                     "-DLLVM_ENABLE_LTO=ON",
                     "-DLLVM_INCLUDE_TESTS=OFF",
@@ -48,6 +47,8 @@ class Lld < Formula
   end
 
   test do
+    assert_match version.major_minor_patch.to_s, shell_output("#{bin}/wasm-ld --version")
+
     (testpath/"bin/lld").write <<~BASH
       #!/bin/bash
       exit 1
