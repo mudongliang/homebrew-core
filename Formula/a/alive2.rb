@@ -2,7 +2,7 @@ class Alive2 < Formula
   desc "Automatic verification of LLVM optimizations"
   homepage "https://github.com/AliveToolkit/alive2"
   license "MIT"
-  revision 5
+  revision 6
   head "https://github.com/AliveToolkit/alive2.git", branch: "master"
 
   stable do
@@ -16,6 +16,14 @@ class Alive2 < Formula
       sha256 "6645b59d29e7a4bbe45e91f57391cf9d4e5dbc27ba99a93c89ad13b14d57a7c4"
       type :backport
       resolves "https://github.com/AliveToolkit/alive2/pull/1265"
+    end
+
+    # Backport commit for LLVM 23
+    patch do
+      url "https://github.com/AliveToolkit/alive2/commit/155386f37536a8f64d78c0ef7d52f7d3f1926cd1.patch?full_index=1"
+      sha256 "01b319ccbfdb2a8c2a98bd2d5fc2e5b9564511f2738afae1b8d125d014af1678"
+      type :backport
+      resolves "https://github.com/AliveToolkit/alive2/pull/1309"
     end
   end
 
