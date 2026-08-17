@@ -43,6 +43,8 @@ class Pkgconf < Formula
     end
   end
 
+  deny_network_access!
+
   def install
     pc_path = %W[
       #{HOMEBREW_PREFIX}/lib/pkgconfig
