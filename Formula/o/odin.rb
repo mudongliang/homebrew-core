@@ -6,6 +6,7 @@ class Odin < Formula
       revision: "8412dc37aa91def0c2fa90f89eade29056b4e608"
   version "2026-08"
   license "Zlib"
+  revision 1
   head "https://github.com/odin-lang/Odin.git", branch: "master"
 
   bottle do
@@ -18,8 +19,8 @@ class Odin < Formula
   end
 
   depends_on "glfw" => :no_linkage
-  depends_on "lld"
-  depends_on "llvm"
+  depends_on "lld@22"
+  depends_on "llvm@22"
   depends_on "raylib"
 
   fails_with :gcc do
