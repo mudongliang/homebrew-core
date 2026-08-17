@@ -26,6 +26,8 @@ class Ripgrep < Formula
   depends_on "rust" => :build
   depends_on "pcre2"
 
+  deny_network_access!
+
   def install
     system "cargo", "install", *std_cargo_args(features: "pcre2")
 
