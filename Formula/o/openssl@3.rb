@@ -91,6 +91,8 @@ class OpensslAT3 < Formula
     args
   end
 
+  deny_network_access!
+
   def install
     if OS.linux?
       ENV.prepend_create_path "PERL5LIB", buildpath/"lib/perl5"
