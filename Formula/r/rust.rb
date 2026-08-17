@@ -4,6 +4,7 @@ class Rust < Formula
   url "https://static.rust-lang.org/dist/rustc-1.97.1-src.tar.gz"
   sha256 "622c2b429c53cbfdc0dd3a51d03554e91cd63ebec1912c1f5709640cdfef1a9d"
   license any_of: ["Apache-2.0", "MIT"]
+  revision 1
   compatibility_version 1
   head "https://github.com/rust-lang/rust.git", branch: "main"
 
@@ -18,7 +19,7 @@ class Rust < Formula
 
   depends_on "libgit2"
   depends_on "libssh2"
-  depends_on "llvm"
+  depends_on "llvm@22"
   depends_on "openssl@3"
   depends_on "pkgconf"
   depends_on "sqlite"
@@ -109,7 +110,7 @@ class Rust < Formula
   end
 
   def llvm
-    Formula["llvm"]
+    Formula["llvm@22"]
   end
 
   def install
