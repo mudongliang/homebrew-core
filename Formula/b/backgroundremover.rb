@@ -6,6 +6,7 @@ class Backgroundremover < Formula
   url "https://files.pythonhosted.org/packages/01/23/b6db66a9a7ad24e34581bae7910e77e16fce103fd9658bd5b6aef4e5effd/backgroundremover-0.4.5.tar.gz"
   sha256 "b9fe5ebaa234d43bfae02a2f28734e589ee895a861e55c02f6f1a41518587852"
   license "MIT"
+  revision 1
 
   bottle do
     sha256 cellar: :any, arm64_tahoe:   "f788cb8af67909853b78cc438ae5b45a9d89a792da080d60e11aef38345f4ad5"
@@ -21,7 +22,7 @@ class Backgroundremover < Formula
   depends_on "certifi" => :no_linkage
   depends_on "ffmpeg"
   depends_on "libheif"
-  depends_on "llvm"
+  depends_on "llvm@22"
   depends_on "pillow" => :no_linkage
   depends_on "python@3.14"
   depends_on "scikit-image" => :no_linkage
