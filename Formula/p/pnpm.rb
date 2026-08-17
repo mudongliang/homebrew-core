@@ -26,6 +26,8 @@ class Pnpm < Formula
 
   conflicts_with "corepack", because: "both install `pnpm` and `pnpx` binaries"
 
+  deny_network_access! [:postinstall, :test]
+
   def install
     system "npm", "install", *std_npm_args
     bin.install_symlink libexec.glob("bin/*")
