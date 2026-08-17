@@ -5,6 +5,7 @@ class Aflxx < Formula
   version "5.02c"
   sha256 "118415843e5d289d63bd6d8f2252c18212978f15ac9e86acbbc75766cd45acde"
   license "Apache-2.0"
+  revision 1
 
   livecheck do
     url :stable
