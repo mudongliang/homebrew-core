@@ -4,6 +4,7 @@ class IncludeWhatYouUse < Formula
   url "https://include-what-you-use.org/downloads/include-what-you-use-0.26.src.tar.gz"
   sha256 "5247c0c9a59df9d14e8aa7408ffec4134c6a4aef12f590929111fbfeac930a08"
   license "NCSA"
+  revision 1
   head "https://github.com/include-what-you-use/include-what-you-use.git", branch: "master"
 
   # This omits the 3.3, 3.4, and 3.5 versions, which come from the older
