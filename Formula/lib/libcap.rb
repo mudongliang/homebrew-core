@@ -18,6 +18,8 @@ class Libcap < Formula
 
   depends_on :linux
 
+  deny_network_access!
+
   def install
     system "make", "install", "prefix=#{prefix}", "lib=lib", "RAISE_SETFCAP=no"
   end
