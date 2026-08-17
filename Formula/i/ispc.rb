@@ -4,6 +4,7 @@ class Ispc < Formula
   url "https://github.com/ispc/ispc/archive/refs/tags/v1.31.0.tar.gz"
   sha256 "671c79bdff2d97aead3897da1a6b67a163af8c4e329350d07cf3e63d592955ff"
   license "BSD-3-Clause"
+  revision 1
 
   # Upstream sometimes creates releases that use a stable tag (e.g., `v1.2.3`)
   # but are labeled as "pre-release" on GitHub, so it's necessary to use the
@@ -25,7 +26,7 @@ class Ispc < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
-  depends_on "llvm"
+  depends_on "llvm@22"
 
   uses_from_macos "python" => :build
 
