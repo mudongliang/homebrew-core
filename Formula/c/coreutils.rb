@@ -49,18 +49,19 @@ class Coreutils < Formula
     %w[dir dircolors vdir]
   end
 
+  deny_network_access!
+
   def install
     ENV.runtime_cpu_detection
     system "./bootstrap" if build.head?
 
-    args = %W[
-      --prefix=#{prefix}
+    args = %w[
       --program-prefix=g
       --with-libgmp
       --without-selinux
     ]
 
-    system "./configure", *args
+    system "./configure", *args, *std_configure_args
     system "make", "install"
 
     no_conflict = if OS.mac?
