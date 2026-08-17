@@ -4,6 +4,7 @@ class Oclgrind < Formula
   url "https://github.com/jrprice/Oclgrind/archive/refs/tags/v26.03.1.tar.gz"
   sha256 "d21a705a2b71491b1505f34a50e14f9666516d1654c0e6745983408bb300e4c2"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url :stable
