@@ -36,6 +36,8 @@ class Cmake < Formula
 
   conflicts_with cask: "cmake-app"
 
+  deny_network_access!
+
   def install
     args = %W[
       --prefix=#{prefix}
