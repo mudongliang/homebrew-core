@@ -23,6 +23,8 @@ class Uv < Formula
   uses_from_macos "bzip2"
   uses_from_macos "xz"
 
+  deny_network_access!
+
   def install
     ENV["UV_COMMIT_HASH"] = ENV["UV_COMMIT_SHORT_HASH"] = tap.user
     ENV["UV_COMMIT_DATE"] = time.strftime("%F")
