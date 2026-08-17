@@ -64,6 +64,8 @@ class Poppler < Formula
     end
   end
 
+  deny_network_access!
+
   def install
     args = std_cmake_args + %W[
       -DBUILD_GTK_TESTS=OFF
