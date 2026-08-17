@@ -26,6 +26,8 @@ class Docker < Formula
 
   conflicts_with cask: "docker-desktop"
 
+  deny_network_access!
+
   def install
     ENV["CGO_ENABLED"] = OS.mac? ? "1" : "0"
     # TODO: Drop GOPATH when merged/released: https://github.com/docker/cli/pull/4116
