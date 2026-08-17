@@ -4,7 +4,7 @@ class Esbmc < Formula
   url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.4.tar.gz"
   sha256 "9959fef848ffae597adac6fa2d74063f9553b4fcee93ed7cbe8aae3bd667bf91"
   license "Apache-2.0"
-  revision 2
+  revision 3
   head "https://github.com/esbmc/esbmc.git", branch: "master"
 
   livecheck do
@@ -30,7 +30,7 @@ class Esbmc < Formula
   depends_on "boost"
   depends_on "fmt"
   depends_on "gmp"
-  depends_on "llvm"
+  depends_on "llvm@22"
   depends_on "python@3.14"
   depends_on "yaml-cpp"
   depends_on "z3"
@@ -41,8 +41,8 @@ class Esbmc < Formula
     python3 = which("python3.14")
 
     args = %W[
-      -DLLVM_DIR=#{formula_opt_lib("llvm")}/cmake/llvm
-      -DClang_DIR=#{formula_opt_lib("llvm")}/cmake/clang
+      -DLLVM_DIR=#{formula_opt_lib("llvm@22")}/cmake/llvm
+      -DClang_DIR=#{formula_opt_lib("llvm@22")}/cmake/clang
       -DPython3_EXECUTABLE=#{python3}
       -DBitwuzla_DIR=#{formula_opt_prefix("bitwuzla")}
       -DENABLE_PYTHON_FRONTEND=ON
