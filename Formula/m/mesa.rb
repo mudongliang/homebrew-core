@@ -20,6 +20,7 @@ class Mesa < Formula
     { "GPL-1.0-or-later" => { with: "Linux-syscall-note" } }, # include/drm-uapi/sync_file.h
     { "GPL-2.0-only" => { with: "Linux-syscall-note" } }, # include/drm-uapi/{d3dkmthk.h,dma-buf.h,etnaviv_drm.h}
   ]
+  revision 1
   compatibility_version 1
   head "https://gitlab.freedesktop.org/mesa/mesa.git", branch: "main"
 
@@ -39,6 +40,7 @@ class Mesa < Formula
   depends_on "libxrender" => :build
   depends_on "libxshmfence" => :build
   depends_on "libyaml" => :build
+  depends_on "llvm@22" => :build # FIXME: https://github.com/rust-lang/rust-bindgen/issues/3397
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => [:build, :test]
@@ -123,11 +125,15 @@ class Mesa < Formula
     # Work around superenv to avoid mixing `expat` usage in libraries across dependency tree.
     # Brew `expat` usage in Python has low impact as it isn't loaded unless pyexpat is used.
     # TODO: Consider adding a DSL for this or change how we handle Python's `expat` dependency
+    env_vars = %w[CMAKE_PREFIX_PATH HOMEBREW_INCLUDE_PATHS HOMEBREW_LIBRARY_PATHS PATH PKG_CONFIG_PATH]
     if OS.mac? && MacOS.version < :sequoia
-      env_vars = %w[CMAKE_PREFIX_PATH HOMEBREW_INCLUDE_PATHS HOMEBREW_LIBRARY_PATHS PATH PKG_CONFIG_PATH]
       ENV.remove env_vars, /(^|:)#{Regexp.escape(formula_opt_prefix("expat"))}[^:]*/
       ENV.remove "HOMEBREW_DEPENDENCIES", "expat"
     end
+    # TODO: Remove once bindgen issue is fixed: https://github.com/rust-lang/rust-bindgen/issues/3397
+    ENV.remove env_vars, /(^|:)#{Regexp.escape(formula_opt_prefix("llvm@22"))}[^:]*/
+    ENV.remove "HOMEBREW_DEPENDENCIES", "llvm@22"
+    ENV["CLANG_PATH"] = formula_opt_bin("llvm@22")/"clang"
 
     venv = virtualenv_create(buildpath/"venv", python3)
     venv.pip_install resources.reject { |r| OS.mac? && r.name == "ply" }
