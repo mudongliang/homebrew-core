@@ -63,6 +63,8 @@ class Glib < Formula
     file "Patches/glib/hardcoded-paths.diff"
   end
 
+  deny_network_access!
+
   def install
     # Avoid the sandbox violation when an empty directory is created outside of the formula prefix.
     inreplace "gio/meson.build", "install_emptydir(glib_giomodulesdir)", ""
