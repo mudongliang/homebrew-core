@@ -4,6 +4,7 @@ class RustWasm < Formula
   url "https://static.rust-lang.org/dist/rustc-1.97.1-src.tar.gz"
   sha256 "622c2b429c53cbfdc0dd3a51d03554e91cd63ebec1912c1f5709640cdfef1a9d"
   license any_of: ["Apache-2.0", "MIT"]
+  revision 1
 
   livecheck do
     formula "rust"
@@ -19,7 +20,7 @@ class RustWasm < Formula
   end
 
   depends_on "wasmtime" => :test
-  depends_on "lld"
+  depends_on "lld@22"
   depends_on "rust"
   depends_on "wasi-libc"
   depends_on "wasm-component-ld"
