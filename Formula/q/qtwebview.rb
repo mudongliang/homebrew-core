@@ -1,10 +1,10 @@
 class Qtwebview < Formula
   desc "Displays web content in a QML application"
   homepage "https://www.qt.io/"
-  url "https://download.qt.io/official_releases/qt/6.11/6.11.1/submodules/qtwebview-everywhere-src-6.11.1.tar.xz"
-  mirror "https://qt.mirror.constant.com/archive/qt/6.11/6.11.1/submodules/qtwebview-everywhere-src-6.11.1.tar.xz"
-  mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.11/6.11.1/submodules/qtwebview-everywhere-src-6.11.1.tar.xz"
-  sha256 "8d62c8ef70d58260e9b3e8b5fc1a8bc48495308a4437003a394483757427133d"
+  url "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtwebview-everywhere-src-6.11.2.tar.xz"
+  mirror "https://qt.mirror.constant.com/archive/qt/6.11/6.11.2/submodules/qtwebview-everywhere-src-6.11.2.tar.xz"
+  mirror "https://mirrors.ukfast.co.uk/sites/qt.io/archive/qt/6.11/6.11.2/submodules/qtwebview-everywhere-src-6.11.2.tar.xz"
+  sha256 "7e21e109ee89dadeef2d3edd786bcb9d64a5562ea546f89dcc79b3f52f881f4c"
   license all_of: [
     { any_of: ["LGPL-3.0-only", "GPL-2.0-only", "GPL-3.0-only"] },
     "BSD-3-Clause", # *.cmake
